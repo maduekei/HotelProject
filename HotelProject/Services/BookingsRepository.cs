@@ -26,10 +26,12 @@ namespace HotelProject.Services
                _context.Bookings.Update(booking);
              await   _context.SaveChangesAsync();
 
+                                
                 //Release the room
               //  var m = new RoomRepository();
               //await  m.ReleaseRoomAsync(booking.RoomID);
                 return await Task.FromResult(true);
+
 
             }
             else

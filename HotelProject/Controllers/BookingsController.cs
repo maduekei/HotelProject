@@ -16,6 +16,9 @@ namespace HotelProject.Controllers
     public class BookingsController : ControllerBase
     {
         private readonly IBookingRepository _repo;
+        private readonly IRoomRepository _repo2;
+
+       
 
         public BookingsController(IBookingRepository repo)
         {
@@ -30,7 +33,9 @@ namespace HotelProject.Controllers
 
             var result = await _repo.ReserveRoomAsync(model);
 
+          // await _repo2.MarkRoomAsOccupiedAsync(model.RoomID); // Mark the room as occupied
 
+            
 
             return Ok(result);
             
@@ -69,6 +74,8 @@ namespace HotelProject.Controllers
         
         {
             var result = await _repo.CheckoutAsync(id);
+
+           // await _repo2.ReleaseRoomAsync(id) // the room should be released to in readiness for another customer
             return Ok(result);
 
         }
